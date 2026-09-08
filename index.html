@@ -656,7 +656,14 @@
 
   @media (max-width: 560px) { .cookie-banner { flex-direction: column; align-items: flex-start; } }
 
-  /* Placeholder — секции добавляются по одной */
+  /* ===== Scroll-reveal ===== */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -1026,7 +1033,64 @@
   <button id="cookieAccept" class="btn btn-gold btn-small">Принять</button>
 </div>
 
-<!-- CONTENT_PLACEHOLDER -->
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('navMobile');
+    toggle.addEventListener('click', function () {
+      var open = mobileNav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileNav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        mobileNav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+
+  (function () {
+    var KEY = 'veritas_cookie_consent';
+    var banner = document.getElementById('cookieBanner');
+    var accept = document.getElementById('cookieAccept');
+    if (!localStorage.getItem(KEY)) {
+      setTimeout(function () { banner.classList.add('show'); }, 800);
+    }
+    accept.addEventListener('click', function () {
+      localStorage.setItem(KEY, '1');
+      banner.classList.remove('show');
+    });
+  })();
+
+  (function () {
+    var form = document.getElementById('contactForm');
+    var success = document.getElementById('formSuccess');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      success.classList.add('show');
+      form.reset();
+      success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  })();
+
+  (function () {
+    var targets = document.querySelectorAll('.practice-card, .case-card, .price-card, .team-card');
+    targets.forEach(function (el) { el.classList.add('reveal'); });
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('revealed'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    targets.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
