@@ -459,6 +459,51 @@
     .price-card.featured { transform: none; }
   }
 
+  /* ===== Команда ===== */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .team-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .team-photo { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; object-position: top; }
+
+  .team-body { padding: 22px 24px 26px; }
+  .team-card h3 { font-size: 18px; margin-bottom: 3px; }
+  .team-role { font-size: 13.5px; color: var(--gold); margin-bottom: 12px; }
+
+  .team-exp {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .team-tags { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+
+  .team-quote {
+    font-size: 13.5px;
+    color: var(--text-dim);
+    font-style: italic;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 880px) { .team-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 881px) and (max-width: 1080px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+
   /* Placeholder — секции добавляются по одной */
 </style>
 </head>
@@ -691,6 +736,54 @@
         </ul>
         <a href="#contact" class="btn btn-gold">Оставить заявку</a>
       </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="team" class="section-alt">
+  <div class="container">
+    <div class="section-head-row">
+      <div class="section-head">
+        <h2>Наши юристы</h2>
+        <p>Профессионалы, которым можно доверять.</p>
+      </div>
+      <a href="#contact" class="link-more">Вся команда →</a>
+    </div>
+    <div class="team-grid">
+
+      <article class="team-card">
+        <img class="team-photo" src="img/lawyer-1.jpg" alt="Алексей Воронов, управляющий партнёр" width="500" height="600" loading="lazy">
+        <div class="team-body">
+          <h3>Алексей Воронов</h3>
+          <p class="team-role">Управляющий партнёр</p>
+          <span class="team-exp">15+ лет опыта</span>
+          <p class="team-tags">Корпоративное право, судебная практика</p>
+          <p class="team-quote">«Для меня важно не просто знать закон, а уметь применять его на практике в интересах клиента.»</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img class="team-photo" src="img/lawyer-2.jpg" alt="Екатерина Смирнова, ведущий юрист" width="500" height="600" loading="lazy">
+        <div class="team-body">
+          <h3>Екатерина Смирнова</h3>
+          <p class="team-role">Ведущий юрист</p>
+          <span class="team-exp">10+ лет опыта</span>
+          <p class="team-tags">Семейное право, наследственные споры</p>
+          <p class="team-quote">«В каждой ситуации я вижу прежде всего человека и его историю. Моя задача — найти лучшее решение.»</p>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img class="team-photo" src="img/lawyer-3.jpg" alt="Дмитрий Ковалёв, юрист" width="500" height="600" loading="lazy">
+        <div class="team-body">
+          <h3>Дмитрий Ковалёв</h3>
+          <p class="team-role">Юрист</p>
+          <span class="team-exp">8+ лет опыта</span>
+          <p class="team-tags">Недвижимость, банкротство</p>
+          <p class="team-quote">«Чёткий анализ, продуманная стратегия и настойчивость — залог успешного результата.»</p>
+        </div>
+      </article>
 
     </div>
   </div>
