@@ -504,6 +504,80 @@
   @media (max-width: 880px) { .team-grid { grid-template-columns: 1fr; } }
   @media (min-width: 881px) and (max-width: 1080px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
 
+  /* ===== Контакты / форма ===== */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .contact-form-wrap { padding: 56px 52px; }
+  .contact-form-wrap h2 { font-size: clamp(26px, 3vw, 32px); margin-bottom: 10px; }
+  .contact-form-wrap > p { color: var(--text-dim); margin-bottom: 28px; }
+
+  .contact-form textarea,
+  .contact-form input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14.5px;
+    margin-bottom: 14px;
+  }
+
+  .contact-form textarea { resize: vertical; min-height: 100px; }
+  .contact-form textarea:focus, .contact-form input:focus { outline: none; border-color: var(--gold); }
+
+  .contact-form-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .contact-form-row input { margin-bottom: 0; }
+
+  .consent-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 12.5px;
+    color: var(--text-dim);
+    margin: 16px 0 26px;
+  }
+
+  .consent-check input { margin-top: 2px; width: auto; }
+  .consent-check a { color: var(--gold); text-decoration: underline; }
+
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+  .btn-social { padding: 15px 22px; }
+  .btn-whatsapp { background: #25D366; color: #0b2b16; }
+  .btn-telegram { background: #229ED9; color: #08202e; }
+
+  .contact-note { font-size: 12.5px; color: var(--text-faint); }
+
+  .contact-art { position: relative; }
+  .contact-art img { width: 100%; height: 100%; object-fit: cover; }
+
+  .form-success {
+    display: none;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  .form-success.show { display: block; }
+
+  @media (max-width: 880px) {
+    .contact-inner { grid-template-columns: 1fr; }
+    .contact-art { order: -1; max-height: 220px; }
+    .contact-form-wrap { padding: 36px 24px; }
+    .contact-form-row { grid-template-columns: 1fr; }
+  }
+
   /* Placeholder — секции добавляются по одной */
 </style>
 </head>
@@ -785,6 +859,47 @@
         </div>
       </article>
 
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-form-wrap">
+        <h2>Опишите вашу ситуацию</h2>
+        <p>Мы свяжемся с вами и предложим оптимальное решение.</p>
+
+        <div class="form-success" id="formSuccess">Заявка отправлена. Мы свяжемся с вами в течение рабочего дня.</div>
+
+        <form class="contact-form" id="contactForm">
+          <textarea name="situation" rows="4" placeholder="Кратко опишите ваш вопрос..." required></textarea>
+          <div class="contact-form-row">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <input type="tel" name="phone" placeholder="Телефон" required>
+            <input type="email" name="email" placeholder="E-mail (не обязательно)">
+          </div>
+          <label class="consent-check">
+            <input type="checkbox" required>
+            <span>Согласен с <a href="legal/consent.html">обработкой персональных данных</a></span>
+          </label>
+          <div class="contact-actions">
+            <button type="submit" class="btn btn-gold">Отправить заявку →</button>
+            <a href="https://wa.me/74951234567" target="_blank" rel="noopener" class="btn btn-social btn-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.2 0-.3 0-.4 0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.2 1.6 2.5 4 3.4.6.2 1 .4 1.3.5.5.2 1 .1 1.4.1.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.4-.3z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://t.me/veritas_law" target="_blank" rel="noopener" class="btn btn-social btn-telegram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1-.9 1.2-1.7.7l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13 1.7 11.5c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></svg>
+              Telegram
+            </a>
+          </div>
+          <p class="contact-note">🔒 Ваши данные защищены и не передаются третьим лицам.</p>
+        </form>
+      </div>
+      <div class="contact-art">
+        <img src="img/contact-desk.jpg" alt="Раскрытый свод законов и ручка на рабочем столе" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
