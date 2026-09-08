@@ -254,6 +254,146 @@
     .hero-art-label { display: none; }
   }
 
+  /* ===== Практика ===== */
+  .section-alt { background: var(--bg-alt); }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .practice-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 30px 26px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .practice-card:hover { border-color: rgba(201,162,39,0.4); transform: translateY(-3px); }
+
+  .practice-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--gold-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .practice-icon svg { width: 22px; height: 22px; }
+
+  .practice-card h3 { font-size: 18.5px; margin-bottom: 12px; }
+
+  .practice-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .practice-list li {
+    font-size: 14px;
+    color: var(--text-dim);
+    padding-left: 15px;
+    position: relative;
+  }
+
+  .practice-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .practice-more { font-size: 13.5px; font-weight: 600; color: var(--gold); }
+
+  @media (max-width: 880px) {
+    .practice-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (min-width: 881px) and (max-width: 1080px) {
+    .practice-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== Кейсы ===== */
+  .section-head-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .section-head-row .section-head { margin-bottom: 0; }
+
+  .link-more { font-size: 14px; font-weight: 600; color: var(--gold); white-space: nowrap; }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .case-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-tag {
+    align-self: flex-start;
+    margin: 22px 26px 0;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--gold-soft);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .case-card h3 { font-size: 18px; margin: 16px 26px 10px; }
+  .case-card p { font-size: 14px; color: var(--text-dim); margin: 0 26px 20px; flex-grow: 1; }
+
+  .case-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 26px 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .case-result-badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #16130a;
+    background: var(--gold);
+    padding: 4px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .case-result-value { font-size: 13.5px; color: var(--text-dim); }
+
+  @media (max-width: 880px) { .cases-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 881px) and (max-width: 1080px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
+
   /* Placeholder — секции добавляются по одной */
 </style>
 </head>
@@ -303,6 +443,141 @@
     <div class="hero-art">
       <img src="img/themis-statue.jpg" alt="Статуя богини правосудия Фемиды" width="900" height="1100" loading="eager">
       <span class="hero-art-label">Право работает на людей</span>
+    </div>
+  </div>
+</section>
+
+<section id="practice" class="practice">
+  <div class="container">
+    <div class="section-head">
+      <h2>Наши направления</h2>
+      <p>Комплексные юридические решения для частных лиц и бизнеса</p>
+    </div>
+    <div class="practice-grid">
+
+      <article class="practice-card">
+        <div class="practice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="7" r="2.6"/><circle cx="16" cy="7" r="2.6"/><path d="M3 19c0-3 2.2-5 5-5s5 2 5 5M11 19c0-3 2.2-5 5-5s5 2 5 5"/></svg>
+        </div>
+        <h3>Семейное право</h3>
+        <ul class="practice-list">
+          <li>Разводы и раздел имущества</li>
+          <li>Вопросы опеки и алиментов</li>
+          <li>Брачные договоры</li>
+        </ul>
+        <a href="#contact" class="practice-more">Подробнее →</a>
+      </article>
+
+      <article class="practice-card">
+        <div class="practice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/><path d="M10 20v-5h4v5"/></svg>
+        </div>
+        <h3>Недвижимость</h3>
+        <ul class="practice-list">
+          <li>Сделки с недвижимостью</li>
+          <li>Проверка и сопровождение</li>
+          <li>Споры о праве собственности</li>
+        </ul>
+        <a href="#contact" class="practice-more">Подробнее →</a>
+      </article>
+
+      <article class="practice-card">
+        <div class="practice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>
+        </div>
+        <h3>Банкротство</h3>
+        <ul class="practice-list">
+          <li>Банкротство физических лиц</li>
+          <li>Банкротство бизнеса</li>
+          <li>Защита от кредиторов</li>
+        </ul>
+        <a href="#contact" class="practice-more">Подробнее →</a>
+      </article>
+
+      <article class="practice-card">
+        <div class="practice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="11" rx="1.5"/><path d="M8.5 8V6a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 6v2"/><path d="M3.5 13h17"/></svg>
+        </div>
+        <h3>Корпоративное право</h3>
+        <ul class="practice-list">
+          <li>Регистрация и сопровождение</li>
+          <li>Договорная работа</li>
+          <li>Корпоративные споры</li>
+        </ul>
+        <a href="#contact" class="practice-more">Подробнее →</a>
+      </article>
+
+      <article class="practice-card">
+        <div class="practice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1z"/><path d="M14 3.5v4h4"/><path d="M9 12.5h6M9 16h6"/></svg>
+        </div>
+        <h3>Наследственное право</h3>
+        <ul class="practice-list">
+          <li>Оформление наследства</li>
+          <li>Споры между наследниками</li>
+          <li>Восстановление сроков</li>
+        </ul>
+        <a href="#contact" class="practice-more">Подробнее →</a>
+      </article>
+
+      <article class="practice-card">
+        <div class="practice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+        </div>
+        <h3>Защита в суде</h3>
+        <ul class="practice-list">
+          <li>Представительство в суде</li>
+          <li>Подготовка документов</li>
+          <li>Обжалование решений</li>
+        </ul>
+        <a href="#contact" class="practice-more">Подробнее →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="cases" class="section-alt">
+  <div class="container">
+    <div class="section-head-row">
+      <div class="section-head">
+        <h2>Примеры из нашей практики</h2>
+        <p>Реальные дела. Реальные результаты.</p>
+      </div>
+      <a href="#contact" class="link-more">Все кейсы →</a>
+    </div>
+    <div class="cases-grid">
+
+      <article class="case-card">
+        <span class="case-tag">Семейное право</span>
+        <h3>Сохранили имущество при разводе</h3>
+        <p>Клиенту удалось сохранить квартиру и избежать несправедливого раздела имущества.</p>
+        <div class="case-result">
+          <span class="case-result-badge">Результат</span>
+          <span class="case-result-value">Имущество осталось у клиента</span>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <span class="case-tag">Недвижимость</span>
+        <h3>Признали право собственности</h3>
+        <p>Оспорили незаконный отказ в регистрации и добились признания права собственности.</p>
+        <div class="case-result">
+          <span class="case-result-badge">Результат</span>
+          <span class="case-result-value">Право собственности зарегистрировано</span>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <span class="case-tag">Банкротство</span>
+        <h3>Списали 4,8 млн ₽ долгов</h3>
+        <p>Провели процедуру банкротства и освободили клиента от долговых обязательств.</p>
+        <div class="case-result">
+          <span class="case-result-badge">Результат</span>
+          <span class="case-result-value">Долги списаны полностью</span>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
