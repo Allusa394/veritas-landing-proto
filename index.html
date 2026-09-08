@@ -578,6 +578,84 @@
     .contact-form-row { grid-template-columns: 1fr; }
   }
 
+  /* ===== Футер ===== */
+  .site-footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding-top: 64px; }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+  }
+
+  .footer-brand .logo { margin-bottom: 4px; }
+  .footer-brand p { color: var(--text-dim); font-size: 14px; margin-top: 14px; max-width: 240px; }
+
+  .footer-col h4 {
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  .footer-col a, .footer-col p {
+    display: block;
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px 32px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 880px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ===== Cookie-баннер ===== */
+  .cookie-banner {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    z-index: 80;
+    transform: translateY(140%);
+    transition: transform 0.4s ease;
+  }
+
+  .cookie-banner.show { transform: translateY(0); }
+  .cookie-banner p { font-size: 13px; color: var(--text-dim); margin: 0; }
+  .cookie-banner a { color: var(--gold); text-decoration: underline; }
+  .btn-small { padding: 10px 18px; font-size: 12.5px; white-space: nowrap; }
+
+  @media (max-width: 560px) { .cookie-banner { flex-direction: column; align-items: flex-start; } }
+
   /* Placeholder — секции добавляются по одной */
 </style>
 </head>
@@ -903,6 +981,50 @@
     </div>
   </div>
 </section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col footer-brand">
+      <a href="#top" class="logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+          <path d="M16 5v22M9 11l-4.5 6.5h9L9 11zm14 0l-4.5 6.5h9L23 11zM6.5 17.5a2.5 2.5 0 0 0 5 0M20.5 17.5a2.5 2.5 0 0 0 5 0M9 7.5h14M12 27h8" stroke="#c9a227" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">VERITAS<small>Юридическая фирма</small></span>
+      </a>
+      <p>Больше, чем юристы. Мы — ваши союзники.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Навигация</h4>
+      <a href="#about">О нас</a>
+      <a href="#practice">Услуги</a>
+      <a href="#cases">Практика</a>
+      <a href="#team">Команда</a>
+      <a href="#contact">Контакты</a>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <p>+7 (495) 123-45-67</p>
+      <p>info@veritas-legal.ru</p>
+      <p>г. Москва, ул. Тверская, д. 12</p>
+    </div>
+    <div class="footer-col">
+      <h4>Документы</h4>
+      <a href="legal/privacy.html">Политика конфиденциальности</a>
+      <a href="legal/consent.html">Согласие на обработку ПДн</a>
+      <a href="legal/oferta.html">Публичная оферта</a>
+      <a href="legal/cookie.html">Использование cookie</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© 2026 VERITAS. Все права защищены.</p>
+    <p class="demo-badge">Демо-прототип для портфолио. ООО «Веритас Консалт», реквизиты вымышленные.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Мы используем технические cookie для удобства сайта. <a href="legal/cookie.html">Подробнее</a></p>
+  <button id="cookieAccept" class="btn btn-gold btn-small">Принять</button>
+</div>
 
 <!-- CONTENT_PLACEHOLDER -->
 
