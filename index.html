@@ -119,10 +119,193 @@
     font-size: 17px;
   }
 
+  /* ===== Header ===== */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,17,32,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+  }
+
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo svg { width: 32px; height: 32px; flex-shrink: 0; }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+  }
+
+  .logo-text small {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .nav-desktop { display: flex; gap: 32px; font-size: 14.5px; color: var(--text-dim); }
+  .nav-desktop a { transition: color 0.2s ease; }
+  .nav-desktop a:hover { color: var(--gold); }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-mobile a {
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--text-dim);
+  }
+
+  .nav-mobile.open { display: flex; }
+
+  @media (max-width: 880px) {
+    .nav-desktop { display: none; }
+    .nav-toggle { display: inline-flex; }
+  }
+
+  /* ===== Hero ===== */
+  .hero { padding-top: 64px; padding-bottom: 56px; position: relative; overflow: hidden; }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 72% 18%, rgba(201,162,39,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-copy h1 { font-size: clamp(34px, 4.6vw, 54px); margin: 18px 0 20px; }
+
+  .hero-sub { color: var(--text-dim); font-size: 17px; max-width: 460px; margin-bottom: 32px; }
+
+  .hero-trust {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-top: 36px;
+    padding: 0;
+  }
+
+  .hero-trust li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-dim); }
+  .hero-trust li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+  .hero-art { position: relative; }
+
+  .hero-art img {
+    border-radius: 12px;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+  }
+
+  .hero-art-label {
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 880px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-art-label { display: none; }
+  }
+
   /* Placeholder — секции добавляются по одной */
 </style>
 </head>
 <body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 5v22M9 11l-4.5 6.5h9L9 11zm14 0l-4.5 6.5h9L23 11zM6.5 17.5a2.5 2.5 0 0 0 5 0M20.5 17.5a2.5 2.5 0 0 0 5 0M9 7.5h14M12 27h8" stroke="#c9a227" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-text">VERITAS<small>Юридическая фирма</small></span>
+    </a>
+    <nav class="nav-desktop">
+      <a href="#about">О нас</a>
+      <a href="#practice">Услуги</a>
+      <a href="#cases">Практика</a>
+      <a href="#team">Команда</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="#about">О нас</a>
+    <a href="#practice">Услуги</a>
+    <a href="#cases">Практика</a>
+    <a href="#team">Команда</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Закон · Опыт · Результат</span>
+      <h1>Надёжная правовая поддержка в любом вопросе</h1>
+      <p class="hero-sub">Защищаем ваши интересы. Находим решения. Добиваемся результата.</p>
+      <a href="#contact" class="btn btn-gold">Записаться на консультацию →</a>
+      <ul class="hero-trust">
+        <li>Более 10 лет успешной практики</li>
+        <li>Индивидуальный подход</li>
+        <li>Конфиденциальность гарантирована</li>
+      </ul>
+    </div>
+    <div class="hero-art">
+      <img src="img/themis-statue.jpg" alt="Статуя богини правосудия Фемиды" width="900" height="1100" loading="eager">
+      <span class="hero-art-label">Право работает на людей</span>
+    </div>
+  </div>
+</section>
 
 <!-- CONTENT_PLACEHOLDER -->
 
