@@ -394,6 +394,71 @@
   @media (max-width: 880px) { .cases-grid { grid-template-columns: 1fr; } }
   @media (min-width: 881px) and (max-width: 1080px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
 
+  /* ===== Стоимость ===== */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 34px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .price-card.featured {
+    border-color: var(--gold);
+    background: var(--surface-2);
+    transform: translateY(-10px);
+    box-shadow: 0 24px 44px rgba(0,0,0,0.35);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -13px;
+    left: 28px;
+    background: var(--gold);
+    color: #16130a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  .price-card h3 { font-size: 19px; margin-bottom: 8px; }
+  .price-desc { font-size: 13.5px; color: var(--text-dim); margin-bottom: 20px; min-height: 40px; }
+
+  .price-value { font-size: 34px; font-weight: 700; margin-bottom: 22px; }
+  .price-value sup { font-size: 16px; font-weight: 600; margin-right: 2px; color: var(--text-dim); }
+
+  .price-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .price-features li { font-size: 14px; color: var(--text-dim); display: flex; align-items: center; gap: 9px; }
+  .price-features li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+  .price-card .btn { width: 100%; justify-content: center; }
+
+  @media (max-width: 880px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .price-card.featured { transform: none; }
+  }
+
   /* Placeholder — секции добавляются по одной */
 </style>
 </head>
@@ -577,6 +642,55 @@
           <span class="case-result-value">Долги списаны полностью</span>
         </div>
       </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>Стоимость консультации</h2>
+      <p>Прозрачные условия. Никаких скрытых платежей.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card">
+        <h3>Онлайн-консультация</h3>
+        <p class="price-desc">Удобный формат для первичного обсуждения вашей ситуации.</p>
+        <div class="price-value"><sup>от</sup>3 000 ₽</div>
+        <ul class="price-features">
+          <li>До 60 минут</li>
+          <li>Анализ ситуации</li>
+          <li>Рекомендации юриста</li>
+        </ul>
+        <a href="#contact" class="btn btn-gold">Записаться</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="price-badge">Популярный</span>
+        <h3>Очная консультация</h3>
+        <p class="price-desc">Подробный разбор вашего вопроса в офисе.</p>
+        <div class="price-value"><sup>от</sup>5 000 ₽</div>
+        <ul class="price-features">
+          <li>До 60 минут</li>
+          <li>Анализ документов</li>
+          <li>Пошаговый план действий</li>
+        </ul>
+        <a href="#contact" class="btn btn-gold">Записаться</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Письменное заключение</h3>
+        <p class="price-desc">Подготовим подробный юридический анализ по вашему вопросу.</p>
+        <div class="price-value"><sup>от</sup>7 000 ₽</div>
+        <ul class="price-features">
+          <li>Правовой анализ</li>
+          <li>Письменные рекомендации</li>
+          <li>Срок от 2 рабочих дней</li>
+        </ul>
+        <a href="#contact" class="btn btn-gold">Оставить заявку</a>
+      </div>
 
     </div>
   </div>
