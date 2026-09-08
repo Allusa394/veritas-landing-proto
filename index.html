@@ -657,6 +657,159 @@
 
   @media (max-width: 560px) { .cookie-banner { flex-direction: column; align-items: flex-start; } }
 
+  /* ===== Как мы работаем ===== */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .step-card {
+    position: relative;
+    padding-top: 26px;
+  }
+
+  .step-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+
+  .step-card h3 { font-size: 17.5px; margin-bottom: 10px; }
+  .step-card p { font-size: 14px; color: var(--text-dim); }
+
+  .step-card::after {
+    content: '';
+    position: absolute;
+    top: 47px;
+    left: 54px;
+    right: -22px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201,162,39,0.45), rgba(201,162,39,0.05));
+  }
+
+  .step-card:last-child::after { display: none; }
+
+  @media (max-width: 880px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .step-card::after { display: none; }
+    .step-card { padding-top: 0; }
+  }
+
+  @media (min-width: 881px) and (max-width: 1080px) {
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .step-card:nth-child(2)::after { display: none; }
+  }
+
+  /* ===== Сравнение ===== */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  .compare-col {
+    border-radius: 12px;
+    padding: 34px 30px;
+    border: 1px solid var(--border);
+  }
+
+  .compare-col.bad { background: var(--surface); }
+
+  .compare-col.good {
+    background: var(--surface-2);
+    border-color: rgba(201,162,39,0.45);
+    box-shadow: 0 20px 44px rgba(0,0,0,0.32);
+  }
+
+  .compare-col h3 { font-size: 20px; margin-bottom: 6px; }
+  .compare-col.good h3 { color: var(--gold); }
+  .compare-sub { font-size: 13.5px; color: var(--text-faint); margin-bottom: 22px; }
+
+  .compare-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 13px; }
+  .compare-list li { font-size: 14.5px; color: var(--text-dim); display: flex; align-items: flex-start; gap: 11px; line-height: 1.5; }
+  .compare-list li::before { flex-shrink: 0; font-weight: 700; }
+  .compare-col.bad .compare-list li::before { content: '—'; color: #8a5a5a; }
+  .compare-col.good .compare-list li::before { content: '✓'; color: var(--gold); }
+
+  .compare-vs {
+    align-self: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 880px) {
+    .compare-grid { grid-template-columns: 1fr; gap: 16px; }
+    .compare-vs { justify-self: center; }
+  }
+
+  /* ===== Отзывы ===== */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .review-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .review-stars { color: var(--gold); font-size: 14px; letter-spacing: 3px; margin-bottom: 16px; }
+
+  .review-text {
+    font-size: 14.5px;
+    color: var(--text-dim);
+    line-height: 1.65;
+    flex-grow: 1;
+    margin-bottom: 22px;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+  }
+
+  .review-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .review-name { font-size: 14.5px; font-weight: 600; }
+  .review-case { font-size: 12.5px; color: var(--text-faint); }
+
+  @media (max-width: 880px) { .reviews-grid { grid-template-columns: 1fr; } }
+  @media (min-width: 881px) and (max-width: 1080px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+
   /* ===== Scroll-reveal ===== */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.revealed { opacity: 1; transform: translateY(0); }
@@ -678,9 +831,10 @@
       <span class="logo-text">VERITAS<small>Юридическая фирма</small></span>
     </a>
     <nav class="nav-desktop">
-      <a href="#pricing">Стоимость</a>
       <a href="#practice">Услуги</a>
+      <a href="#how">Как работаем</a>
       <a href="#cases">Практика</a>
+      <a href="#pricing">Стоимость</a>
       <a href="#team">Команда</a>
       <a href="#contact">Контакты</a>
     </nav>
@@ -689,9 +843,11 @@
     </button>
   </div>
   <nav class="nav-mobile" id="navMobile">
-    <a href="#pricing">Стоимость</a>
     <a href="#practice">Услуги</a>
+    <a href="#how">Как работаем</a>
     <a href="#cases">Практика</a>
+    <a href="#pricing">Стоимость</a>
+    <a href="#reviews">Отзывы</a>
     <a href="#team">Команда</a>
     <a href="#contact">Контакты</a>
   </nav>
@@ -807,7 +963,43 @@
   </div>
 </section>
 
-<section id="cases" class="section-alt">
+<section id="how" class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Как мы работаем</h2>
+      <p>Прозрачный процесс от первого звонка до результата</p>
+    </div>
+    <div class="steps-grid">
+
+      <article class="step-card">
+        <div class="step-num">1</div>
+        <h3>Заявка</h3>
+        <p>Опишите ситуацию в форме или напишите в мессенджер. Ответим в течение рабочего дня.</p>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">2</div>
+        <h3>Оценка перспектив</h3>
+        <p>Изучим документы и честно скажем, какой исход реален, а какой — нет.</p>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">3</div>
+        <h3>Договор</h3>
+        <p>Фиксируем объём работ, сроки и стоимость. Без скрытых доплат по ходу дела.</p>
+      </article>
+
+      <article class="step-card">
+        <div class="step-num">4</div>
+        <h3>Ведём дело</h3>
+        <p>Готовим документы, представляем вас в суде, держим в курсе на каждом этапе.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="cases">
   <div class="container">
     <div class="section-head-row">
       <div class="section-head">
@@ -852,7 +1044,7 @@
   </div>
 </section>
 
-<section id="pricing">
+<section id="pricing" class="section-alt">
   <div class="container">
     <div class="section-head">
       <h2>Стоимость консультации</h2>
@@ -901,7 +1093,93 @@
   </div>
 </section>
 
-<section id="team" class="section-alt">
+<section id="compare">
+  <div class="container">
+    <div class="section-head">
+      <h2>Сами или с юристом</h2>
+      <p>Что меняется, когда делом занимается специалист</p>
+    </div>
+    <div class="compare-grid">
+
+      <div class="compare-col bad">
+        <h3>Разбираться самому</h3>
+        <p class="compare-sub">Типичный сценарий без юриста</p>
+        <ul class="compare-list">
+          <li>Недели на изучение законов и форумов — с непредсказуемым результатом</li>
+          <li>Иск возвращают из-за ошибок в оформлении, сроки уходят</li>
+          <li>Пропущенный процессуальный срок восстановить почти невозможно</li>
+          <li>На той стороне — юрист, который делает это каждый день</li>
+          <li>Цена ошибки — само имущество или отказ в иске</li>
+        </ul>
+      </div>
+
+      <div class="compare-vs">Против</div>
+
+      <div class="compare-col good">
+        <h3>VERITAS</h3>
+        <p class="compare-sub">Дело ведёт профильный юрист</p>
+        <ul class="compare-list">
+          <li>Честная оценка перспектив до подписания договора</li>
+          <li>Документы готовит специалист по вашему направлению</li>
+          <li>Сроки и заседания под контролем, вы ничего не пропускаете</li>
+          <li>Представляем вас в суде — личное присутствие не обязательно</li>
+          <li>Стоимость и объём работ зафиксированы в договоре</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="section-alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Что говорят клиенты</h2>
+      <p>Отзывы после завершённых дел</p>
+    </div>
+    <div class="reviews-grid">
+
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">«Развод затянулся на полгода, бывший супруг требовал долю в квартире, купленной до брака. Екатерина собрала документы, которые я даже не догадывалась запросить. Квартиру отстояли полностью.»</p>
+        <div class="review-author">
+          <div class="review-avatar">М</div>
+          <div>
+            <div class="review-name">Марина К.</div>
+            <div class="review-case">Раздел имущества</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">«Долгов накопилось на несколько миллионов, банки звонили каждый день. Прошли банкротство от начала до конца, в суд я ездил один раз. Сейчас звонков нет, начинаю с чистого листа.»</p>
+        <div class="review-author">
+          <div class="review-avatar">С</div>
+          <div>
+            <div class="review-name">Сергей В.</div>
+            <div class="review-case">Банкротство физлица</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">«Обратились за сопровождением сделки — юрист нашёл обременение, о котором продавец умолчал. Покупку отменили. Считаю, что консультация окупилась в сто раз.»</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div>
+            <div class="review-name">Алексей и Ольга Д.</div>
+            <div class="review-case">Сделка с недвижимостью</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="team">
   <div class="container">
     <div class="section-head-row">
       <div class="section-head">
@@ -1003,9 +1281,11 @@
     </div>
     <div class="footer-col">
       <h4>Навигация</h4>
-      <a href="#pricing">Стоимость</a>
       <a href="#practice">Услуги</a>
+      <a href="#how">Как работаем</a>
       <a href="#cases">Практика</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#reviews">Отзывы</a>
       <a href="#team">Команда</a>
       <a href="#contact">Контакты</a>
     </div>
@@ -1075,7 +1355,7 @@
   })();
 
   (function () {
-    var targets = document.querySelectorAll('.practice-card, .case-card, .price-card, .team-card');
+    var targets = document.querySelectorAll('.practice-card, .case-card, .price-card, .team-card, .step-card, .compare-col, .review-card');
     targets.forEach(function (el) { el.classList.add('reveal'); });
     if (!('IntersectionObserver' in window)) {
       targets.forEach(function (el) { el.classList.add('revealed'); });
