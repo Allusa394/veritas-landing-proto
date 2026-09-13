@@ -18,8 +18,16 @@ const fs = require('fs');
 const puppeteer = require('puppeteer');
 
 const ROOT = path.resolve(__dirname, '..');
-const FILE_URL = 'file://' + path.join(ROOT, 'index.html').split(path.sep).join('/');
+// По умолчанию проверяем локальный файл. Первым аргументом можно передать живую
+// ссылку — правило «не сдавать работу, не проверенную на продакшене»:
+//   node test/qa-landing.js https://allusa394.github.io/veritas-landing-proto/
+const FILE_URL = process.argv[2] || ('file://' + path.join(ROOT, 'index.html').split(path.sep).join('/'));
 const SHOTS = path.join(__dirname, 'screenshots');
+
+// Chrome, который скачал себе puppeteer, на этом компьютере битый (версия 152 —
+// только манифест без exe). Берём системный Chrome, путь можно переопределить
+// переменной CHROME_PATH.
+const CHROME = process.env.CHROME_PATH || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 
 const results = [];
 function check(name, passed, details) {
@@ -30,7 +38,10 @@ function check(name, passed, details) {
 (async () => {
   if (!fs.existsSync(SHOTS)) fs.mkdirSync(SHOTS, { recursive: true });
 
-  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+  const launchOpts = { args: ['--no-sandbox'] };
+  if (fs.existsSync(CHROME)) launchOpts.executablePath = CHROME;
+  const browser = await puppeteer.launch(launchOpts);
+  console.log('Проверяем: ' + FILE_URL + '\n');
 
   // ---------- Десктоп ----------
   const page = await browser.newPage();
