@@ -246,21 +246,48 @@
     position: relative;
   }
 
-  .hero-copy h1 { font-size: clamp(34px, 4.6vw, 54px); margin: 18px 0 20px; }
+  .hero-copy h1 {
+    font-size: clamp(36px, 4.8vw, 58px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0 0 22px;
+  }
 
   .hero-sub { color: var(--text-dim); font-size: 17px; max-width: 460px; margin-bottom: 32px; }
 
-  .hero-trust {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 26px;
-    margin-top: 36px;
-    padding: 0;
+  /* Полоса условий под первым экраном. В самом экране ей не место: он
+     для обещания и одного действия. И это условия, которые можно
+     проверить, а не «индивидуальный подход» прилагательными. */
+  .trust-strip {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 22px 0;
   }
 
-  .hero-trust li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-dim); }
-  .hero-trust li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+  .trust-strip ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .trust-strip li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-dim);
+  }
+
+  .trust-strip li::before { content: '✓'; color: var(--gold); font-weight: 700; line-height: 1.4; }
+
+  @media (max-width: 880px) {
+    .trust-strip ul { grid-template-columns: 1fr; gap: 14px; }
+  }
 
   .hero-art { position: relative; }
 
@@ -274,21 +301,8 @@
     border: 1px solid var(--border);
   }
 
-  .hero-art-label {
-    position: absolute;
-    right: -16px;
-    top: 50%;
-    transform: translateY(-50%) rotate(180deg);
-    writing-mode: vertical-rl;
-    font-size: 11px;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-  }
-
   @media (max-width: 880px) {
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-art-label { display: none; }
   }
 
   /* ===== Практика ===== */
@@ -934,23 +948,26 @@
 <section class="hero" id="top">
   <div class="container hero-inner">
     <div class="hero-copy">
-      <span class="eyebrow">Закон · Опыт · Результат</span>
-      <h1>Надёжная правовая поддержка в любом вопросе</h1>
-      <p class="hero-sub">Защищаем ваши интересы. Находим решения. Добиваемся результата.</p>
-      <a href="#contact" class="btn btn-gold">Записаться на консультацию <span class="btn-arrow">→</span></a>
-      <ul class="hero-trust">
-        <li>Более 10 лет успешной практики</li>
-        <li>Индивидуальный подход</li>
-        <li>Конфиденциальность гарантирована</li>
-      </ul>
+      <h1>Разберём вашу ситуацию за 30 минут</h1>
+      <p class="hero-sub">Скажем прямо, есть ли перспектива у дела, сколько будет стоить работа и сколько времени займёт.</p>
+      <a href="#contact" class="btn btn-gold">Разобрать мою ситуацию <span class="btn-arrow">→</span></a>
     </div>
     <div class="hero-art">
       <picture>
         <source srcset="img/scales-of-justice.webp" type="image/webp">
         <img src="img/scales-of-justice.jpg" alt="Статуя богини правосудия Фемиды" width="940" height="1670" loading="eager">
       </picture>
-      <span class="hero-art-label">Право работает на людей</span>
     </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container">
+    <ul>
+      <li>Фиксированная цена в договоре, доплат по ходу дела нет</li>
+      <li>Ответ на заявку в течение 2 часов в рабочее время</li>
+      <li>Ведём дело от первой встречи до решения суда</li>
+    </ul>
   </div>
 </section>
 
@@ -958,7 +975,7 @@
   <div class="container">
     <div class="section-head">
       <h2>Наши направления</h2>
-      <p>Комплексные юридические решения для частных лиц и бизнеса</p>
+      <p>С чем к нам приходят чаще всего</p>
     </div>
     <div class="practice-grid">
 
